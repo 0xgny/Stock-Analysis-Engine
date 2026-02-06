@@ -1,1 +1,5 @@
 .venv/
+run.md
+.vscode
+output
+__pycache__

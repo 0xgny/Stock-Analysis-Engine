@@ -1,68 +1,36 @@
-# 📈 Stock Analysis Engine with Machine Learning
+# Stock Analysis Engine with Machine Learning
 
 A comprehensive Python-based financial analysis platform that combines traditional statistical analysis with advanced machine learning techniques for in-depth stock market insights.
 
-## 🌟 Features
+## Features
 
-### 📊 Traditional Financial Analysis
+### Traditional Financial Analysis
 - **Statistical Metrics**: Historical Volatility, Skewness, Kurtosis, Sharpe Ratio
 - **Return Analysis**: Logarithmic returns calculation and distribution analysis
 - **Visualization Suite**: Professional-quality charts with matplotlib and seaborn
 - **Multi-Stock Comparison**: Side-by-side statistical comparison
 
-### 🤖 Machine Learning Capabilities
+### Machine Learning Capabilities
 - **Regression Analysis**: Pairwise regression models with beta coefficients and R² values
 - **Correlation Analysis**: Static and rolling correlation matrices with heatmap visualizations
 - **Cointegration Testing**: Engle-Granger tests for long-term relationship identification
 - **Predictive Modeling**: Foundation for price prediction and portfolio optimization
 
-### 🎨 Advanced Visualizations
+### Advanced Visualizations
 - Returns distribution plots with normal distribution overlay
 - Rolling volatility trend analysis
 - Correlation heatmaps with statistical significance
 - Regression scatter plots with trend lines
 - Time series correlation evolution
 
-## 🚀 Quick Start
 
-### Prerequisites
-- Python 3.8 or higher
-- Internet connection (for fetching stock data)
 
-### Installation
-
-1. **Clone or Download the Project**
-   ```bash
-   git clone <your-repository-url>
-   cd stock-analysis-engine
-   ```
-
-2. **Create Virtual Environment** (Recommended)
-   ```bash
-   python -m venv venv
-   
-   # Activate virtual environment
-   # On Windows:
-   venv\Scripts\activate
-   # On macOS/Linux:
-   source venv/bin/activate
-   ```
-
-3. **Install Dependencies**
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-4. **Run the Application**
-   ```bash
-   python main.py
-   ```
-
-## 📁 Project Structure
+## Project Structure
 
 ```
 stock-analysis-engine/
 ├── README.md                     # This file
+├── LICENSE.txt                    # MIT License
 ├── requirements.txt              # Python dependencies
 ├── main.py                      # Main application entry point
 ├── __init__.py                  # Package initialization
@@ -91,84 +59,9 @@ stock-analysis-engine/
     └── ml_plots/              # Machine learning visualizations
 ```
 
-## 🎯 Usage Guide
 
-### Interactive Menu Options
 
-When you run `python main.py`, you'll see:
-
-```
-🚀 Stock Analysis Engine
-============================================================
-
-What would you like to do?
-1. Analyze a single stock
-2. Compare multiple stocks with ML correlation analysis
-3. Quick demo with Apple (AAPL)
-4. ML Demo: Tech stocks correlation analysis (AAPL, MSFT, GOOGL, TSLA)
-```
-
-### Option 1: Single Stock Analysis
-- Enter any stock ticker symbol (e.g., AAPL, TSLA, MSFT)
-- Choose time period (1y, 2y, 5y)
-- Get comprehensive statistical analysis and visualizations
-
-**Sample Output:**
-```
-📈 FINANCIAL STATISTICS for AAPL:
-──────────────────────────────────────────────────
-Historical Volatility: 28.45%
-Skewness: -0.156
-Kurtosis: 4.231
-Annualized Mean Return: 15.23%
-Sharpe Ratio: 0.535
-
-✅ Returns distribution saved: output/plots/returns_dist_AAPL.png
-✅ Volatility trend saved: output/plots/volatility_AAPL.png
-```
-
-### Option 2: Multi-Stock ML Analysis
-- Compare multiple stocks with advanced ML algorithms
-- Get regression analysis, correlation matrices, and cointegration tests
-- Includes both traditional and ML-powered insights
-
-**Sample ML Output:**
-```
-🤖 REGRESSION ANALYSIS:
-Pair            Beta     R²       Correlation  Significance   
-──────────────────────────────────────────────────────────────
-AAPL-MSFT      0.847    0.423    0.651        Significant    
-AAPL-GOOGL     0.734    0.356    0.597        Significant    
-
-🔬 COINTEGRATION ANALYSIS:
-Pair            Test Stat    P-Value    Relationship   
-────────────────────────────────────────────────────
-AAPL-MSFT      -3.245       0.0234     Cointegrated   
-```
-
-### Option 3: Quick Demo
-- Instant analysis of Apple (AAPL) stock
-- Perfect for testing the system
-
-### Option 4: ML Demo
-- Demonstrates full ML capabilities
-- Analyzes tech stock correlations (AAPL, MSFT, GOOGL, TSLA)
-- Shows all ML features in action
-
-## 📊 Generated Outputs
-
-### Traditional Analysis (`output/plots/`)
-- `returns_dist_{SYMBOL}.png` - Returns distribution with skewness/kurtosis
-- `volatility_{SYMBOL}.png` - Rolling volatility analysis
-- `comparative_stats.png` - Multi-stock comparison charts
-
-### ML Analysis (`output/ml_plots/`)
-- `price_correlation_matrix_heatmap.png` - Price correlation heatmap
-- `returns_correlation_matrix_heatmap.png` - Returns correlation heatmap
-- `regression_analysis.png` - Pairwise regression plots
-- `rolling_correlations.png` - Time series correlation evolution
-
-## 🧮 Statistical Metrics Explained
+##  Statistical Metrics Explained
 
 ### Traditional Metrics
 - **Historical Volatility**: Annualized standard deviation of returns (risk measure)
@@ -182,7 +75,8 @@ AAPL-MSFT      -3.245       0.0234     Cointegrated
 - **Correlation**: Linear relationship strength between two stocks (-1 to +1)
 - **Cointegration**: Long-term equilibrium relationship between stock prices
 
-## 🔧 Technical Implementation
+
+##  Technical Implementation
 
 ### Data Source
 - **Yahoo Finance API** via `yfinance` library
@@ -202,61 +96,9 @@ AAPL-MSFT      -3.245       0.0234     Cointegrated
 - **Engle-Granger Test**: For cointegration analysis
 - **Rolling Window Analysis**: For time-varying correlation patterns
 
-## 🛠 Development and Extension
-
-### Adding New ML Models
-
-1. Create new file in `ml/` directory
-2. Import base classes from existing modules
-3. Follow the pattern established in `correlation_analyzer.py`
-
-Example structure:
-```python
-# ml/your_new_model.py
-import sys, os
-sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
-
-from utils.data_fetcher import StockDataFetcher
-from analysis.financial_metrics import FinancialMetrics
-
-class YourNewModel:
-    def __init__(self):
-        self.fetcher = StockDataFetcher()
-        self.metrics = FinancialMetrics()
-    
-    def your_analysis_method(self, symbols, period):
-        # Your ML implementation here
-        pass
-```
-
-### Extending Visualizations
-
-Add new plot methods to `visualization/stats_visualizer.py` or create specialized visualization classes in the `ml/` module.
-
-## 📋 Dependencies
-
-### Core Requirements
-```
-yfinance>=0.2.0          # Stock data fetching
-pandas>=1.5.0            # Data manipulation
-numpy>=1.24.0            # Numerical computing
-scipy>=1.10.0            # Statistical functions
-matplotlib>=3.6.0        # Plotting library
-seaborn>=0.12.0          # Statistical visualization
-scikit-learn>=1.3.0      # Machine learning
-statsmodels>=0.14.0      # Econometric analysis
-```
-
-### Optional (for future enhancements)
-```
-tensorflow>=2.13.0       # Deep learning
-torch>=2.0.0             # PyTorch for neural networks
-transformers>=4.21.0     # NLP for news analysis
-```
 
 
-
-## 🚀 Future Enhancements
+## Future Enhancements
 
 ### Planned ML Features
 1. **LSTM Price Prediction**: Neural networks for price forecasting
@@ -270,25 +112,8 @@ transformers>=4.21.0     # NLP for news analysis
 3. **Backtesting Framework**: Strategy performance evaluation
 4. **Real-time Data Streaming**: Live market analysis
 
-## 📝 Contributing
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/your-feature`)
-3. Commit your changes (`git commit -m 'Add your amazing feature'`)
-4. Push to the branch (`git push origin feature/your-feature`)
-5. Open a Pull Request
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🙏 Acknowledgments
-
-- Yahoo Finance for providing free financial data
-- The Python scientific computing community
-- Contributors to pandas, numpy, scikit-learn, and other open-source libraries
 
 
-**Happy Analyzing! 📈🤖**
+## License
 
-*Transform your investment decisions with data-driven insights and machine learning intelligence.*
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details. Feel free to open a PR
