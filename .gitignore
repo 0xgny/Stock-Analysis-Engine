@@ -3,3 +3,4 @@ run.md
 .vscode
 output
 __pycache__
+.DS_Store
