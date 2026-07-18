@@ -1,27 +1,28 @@
-# Stock Analysis Engine with Machine Learning
+# Stock Analysis Engine
 
-A comprehensive Python-based financial analysis platform that combines traditional statistical analysis with advanced machine learning techniques for in-depth stock market insights.
+A Python-based, command-line financial analysis tool that combines classic statistical analysis with econometric relationship modelling (correlation, linear regression, and cointegration) to explore historical stock data.
+
+> **Note on "Machine Learning":** the relationship analysis is built with `scikit-learn` and `statsmodels` (linear regression, correlation, and the Engle-Granger cointegration test). There is no trained/saved model, neural network, or forecasting yet — those remain on the roadmap below.
 
 ## Features
 
 ### Traditional Financial Analysis
-- **Statistical Metrics**: Historical Volatility, Skewness, Kurtosis, Sharpe Ratio
+- **Statistical Metrics**: Historical Volatility, Skewness, Kurtosis, Sharpe Ratio (risk-free rate assumed to be 0)
 - **Return Analysis**: Logarithmic returns calculation and distribution analysis
-- **Visualization Suite**: Professional-quality charts with matplotlib and seaborn
+- **Visualization Suite**: Charts rendered with matplotlib and seaborn, saved as PNG files
 - **Multi-Stock Comparison**: Side-by-side statistical comparison
 
-### Machine Learning Capabilities
-- **Regression Analysis**: Pairwise regression models with beta coefficients and R² values
-- **Correlation Analysis**: Static and rolling correlation matrices with heatmap visualizations
+### Relationship Analysis (scikit-learn & statsmodels)
+- **Regression Analysis**: Pairwise linear regression between stock returns, with slope (labelled "beta"), R², correlation, and p-value
+- **Correlation Analysis**: Static and 30-day rolling correlation matrices with heatmap visualizations
 - **Cointegration Testing**: Engle-Granger tests for long-term relationship identification
-- **Predictive Modeling**: Foundation for price prediction and portfolio optimization
 
-### Advanced Visualizations
-- Returns distribution plots with normal distribution overlay
+### Visualizations
+- Returns distribution plots with a normal distribution overlay
 - Rolling volatility trend analysis
-- Correlation heatmaps with statistical significance
-- Regression scatter plots with trend lines
-- Time series correlation evolution
+- Correlation heatmaps
+- Regression scatter plots with best-fit lines
+- Rolling correlation over time
 
 
 
@@ -69,9 +70,9 @@ stock-analysis-engine/
 - **Kurtosis**: Tail heaviness compared to normal distribution (higher = more extreme events)
 - **Sharpe Ratio**: Risk-adjusted return measure (return per unit of risk)
 
-### ML Metrics
-- **Beta Coefficient**: Stock's sensitivity to market movements (β > 1 = more volatile than market)
-- **R-Squared**: Percentage of variance explained by the model (0-1 scale)
+### Relationship Metrics
+- **Beta (regression slope)**: The slope of a pairwise regression between two stocks' returns. Note this is stock-vs-stock, not the textbook market-relative beta (no market benchmark is used by default).
+- **R-Squared**: Fraction of variance explained by the regression (0-1 scale)
 - **Correlation**: Linear relationship strength between two stocks (-1 to +1)
 - **Cointegration**: Long-term equilibrium relationship between stock prices
 
@@ -79,22 +80,22 @@ stock-analysis-engine/
 ##  Technical Implementation
 
 ### Data Source
-- **Yahoo Finance API** via `yfinance` library
-- Real-time and historical stock data
-- Reliable day-end pricing information
+- **Yahoo Finance** via the `yfinance` library
+- Historical daily (day-end) stock data, downloaded fresh on each run
+- Fetched data is cached in memory within a run to avoid duplicate downloads
 
 ### Core Libraries
 - **pandas & numpy**: Data manipulation and numerical computations
-- **scipy**: Advanced statistical calculations
-- **scikit-learn**: Machine learning algorithms
-- **statsmodels**: Econometric analysis and cointegration testing
-- **matplotlib & seaborn**: Professional visualization
+- **scipy**: Statistical calculations (skewness, kurtosis, Pearson correlation)
+- **scikit-learn**: Linear regression and R² scoring
+- **statsmodels**: Cointegration testing (Engle-Granger)
+- **matplotlib & seaborn**: Visualization
 
-### Machine Learning Algorithms
-- **Linear Regression**: For beta calculation and relationship modeling
-- **Pearson/Spearman Correlation**: For relationship strength measurement
+### Algorithms Used
+- **Linear Regression**: For the pairwise regression slope and R²
+- **Pearson Correlation**: For relationship strength and significance (p-value)
 - **Engle-Granger Test**: For cointegration analysis
-- **Rolling Window Analysis**: For time-varying correlation patterns
+- **Rolling Window Analysis**: For time-varying (30-day) correlation and volatility
 
 
 
@@ -116,4 +117,4 @@ stock-analysis-engine/
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details. Feel free to open a PR
+This project is licensed under the MIT License - see the [LICENSE.txt](LICENSE.txt) file for details. Feel free to open a PR
